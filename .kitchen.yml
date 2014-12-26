@@ -1,0 +1,21 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+
+platforms:
+  - name: debian-7.6
+
+suites:
+  - name: proxychains
+    run_list:
+      - recipe[proxychains]
+    attributes:
+      proxychains:
+        chain_type: random
+        chain_len: 42
+        quiet_mode: true
+        proxy_dns: true
+        tcp_read_time_out: 1337
+        tcp_connect_time_out: 42
+        proxy_list: [ 'socks4 127.0.0.1 9050', 'http 192.168.13.37 8080' ]
