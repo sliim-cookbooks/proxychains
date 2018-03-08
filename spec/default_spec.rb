@@ -11,15 +11,15 @@ require 'chef/application'
 describe 'proxychains::default' do
   context 'with custom attributes' do
     let(:subject) do
-      ChefSpec::ServerRunner.new do |node|
-        node.set['proxychains']['chain_type'] = 'random'
-        node.set['proxychains']['chain_len'] = 42
-        node.set['proxychains']['quiet_mode'] = true
-        node.set['proxychains']['proxy_dns'] = true
-        node.set['proxychains']['tcp_read_time_out'] = 1337
-        node.set['proxychains']['tcp_connect_time_out'] = 42
-        node.set['proxychains']['proxy_list'] = ['socks4 127.0.0.1 9050',
-                                                 'http 192.168.13.37 8080']
+      ChefSpec::SoloRunner.new(platform: 'debian', version: '9.0') do |node|
+        node.override['proxychains']['chain_type'] = 'random'
+        node.override['proxychains']['chain_len'] = 42
+        node.override['proxychains']['quiet_mode'] = true
+        node.override['proxychains']['proxy_dns'] = true
+        node.override['proxychains']['tcp_read_time_out'] = 1337
+        node.override['proxychains']['tcp_connect_time_out'] = 42
+        node.override['proxychains']['proxy_list'] = ['socks4 127.0.0.1 9050',
+                                                      'http 192.168.13.37 8080']
       end.converge(described_recipe)
     end
 
