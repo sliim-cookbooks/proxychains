@@ -5,7 +5,7 @@ gem 'chef'
 gem 'berkshelf'
 
 group :integration do
-  gem 'rubocop'
+  gem 'cookstyle'
   gem 'rake'
   gem 'test-kitchen'
   gem 'kitchen-vagrant'

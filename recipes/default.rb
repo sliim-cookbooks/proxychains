@@ -19,7 +19,7 @@
 package 'proxychains'
 
 unless %w(strict dynamic random).include? node['proxychains']['chain_type']
-  fail ArgumentError, "#{node['proxychains']['chain_type']} invalid for \
+  raise ArgumentError, "#{node['proxychains']['chain_type']} invalid for \
 chain type. Possible values are: strict, dynamic or random"
 end
 
