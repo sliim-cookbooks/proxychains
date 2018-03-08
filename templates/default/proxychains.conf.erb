@@ -22,26 +22,26 @@
 # Random - Each connection will be done via random proxy
 # (or proxy chain, see  chain_len) from the list.
 # this option is good to test your IDS :)
-<%= node.proxychains.chain_type %>_chain
+<%= node['proxychains']['chain_type'] %>_chain
 
 # Make sense only if random_chain
-<% unless node.proxychains.chain_len.nil? %>
-chain_len = <%= node.proxychains.chain_len %>
+<% unless node['proxychains']['chain_len'].nil? %>
+chain_len = <%= node['proxychains']['chain_len'] %>
 <% end %>
 
 # Quiet mode (no output from library)
-<% if node.proxychains.quiet_mode %>
+<% if node['proxychains']['quiet_mode'] %>
 quiet_mode
 <% end %>
 
 # Proxy DNS requests - no leak for DNS data
-<% if node.proxychains.proxy_dns %>
+<% if node['proxychains']['proxy_dns'] %>
 proxy_dns
 <% end %>
 
 # Some timeouts in milliseconds
-tcp_read_time_out <%= node.proxychains.tcp_read_time_out %>
-tcp_connect_time_out <%= node.proxychains.tcp_connect_time_out %>
+tcp_read_time_out <%= node['proxychains']['tcp_read_time_out'] %>
+tcp_connect_time_out <%= node['proxychains']['tcp_connect_time_out'] %>
 
 # ProxyList format
 #       type  host  port [user pass]
@@ -62,8 +62,8 @@ tcp_connect_time_out <%= node.proxychains.tcp_connect_time_out %>
 [ProxyList]
 # add proxy here ...
 # meanwile
-<% unless node.proxychains.proxy_list.empty? %>
-  <% node.proxychains.proxy_list.each do |proxy| -%>
+<% unless node['proxychains']['proxy_list'].empty? %>
+  <% node['proxychains']['proxy_list'].each do |proxy| -%>
 <%= proxy %>
   <% end -%>
 <% end %>
