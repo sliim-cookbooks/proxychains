@@ -5,7 +5,7 @@ license 'Apache-2.0'
 description 'Installs/Configures proxychains'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 chef_version '>= 12.0' if respond_to?(:chef_version)
-version '0.1.0'
+version '0.2.0'
 
 recipe 'proxychains::default', 'Installs and configures proxychains'
 
